@@ -1,7 +1,7 @@
 import React from "react";
 import { Platform, Text } from "react-native";
 
-import { createStackNavigator } from "react-navigation-stack";
+import { createStackNavigator, TransitionPresets } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createDrawerNavigator } from "react-navigation-drawer";
@@ -31,6 +31,8 @@ const defaultStackNavigatorOptions = {
   },
   headerTintColor:
     Platform.OS === "android" ? Colors.secondaryColor : Colors.primaryColor,
+  headerTitleAlign: 'center',
+  ...TransitionPresets.SlideFromRightIOS
 };
 
 const RecipesNavigator = createStackNavigator(
@@ -112,7 +114,7 @@ const RecipesFavTabsNavigator =
   Platform.OS === "android"
     ? createMaterialBottomTabNavigator(tabScreenConfig, {
         activeColor: Colors.secondaryColor,
-        inactiveColor: "rgba(78,76,74,0.5)",
+        inactiveColor: Colors.inactiveGray,
         shifting: true,
         barStyle: { backgroundColor: Colors.primaryColor },
       })
@@ -168,7 +170,7 @@ const MainNavigator = createDrawerNavigator(
   {
     contentOptions: {
       activeTintColor: Colors.secondaryColor,
-      inactiveTintColor: "rgba(78,76,74,0.5)",
+      inactiveTintColor: Colors.inactiveGray,
       labelStyle: {
         fontFamily: "open-sans-bold",
         fontSize: 18,

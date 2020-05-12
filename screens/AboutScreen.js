@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     height: 300,
     borderRadius: 300 / 2,
     borderWidth: 5,
-    borderColor: Colors.primaryColor,
+    borderColor: Colors.accentColor,
     overflow: "hidden",
     elevation: 5,
     marginBottom: 30,

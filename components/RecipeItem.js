@@ -8,7 +8,6 @@ import {
 } from "react-native";
 
 import DefaultText from "./DefaultText";
-import Colors from "../constants/Colors";
 
 const RecipeItem = (props) => {
   return (

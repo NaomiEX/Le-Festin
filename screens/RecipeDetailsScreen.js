@@ -19,7 +19,7 @@ import Colors from "../constants/Colors";
 const ListItem = (props) => {
   return (
     <View style={styles.listItem}>
-      <DefaultText>{props.children}</DefaultText>
+      <DefaultText style={styles.data}>{props.children}</DefaultText>
     </View>
   );
 };
@@ -49,19 +49,19 @@ const RecipeDetailsScreen = (props) => {
         <View style={styles.titleContainer}>
           <Text style={styles.title}>Ingredients</Text>
         </View>
-        <Card style={styles.card}>
+        <View style={styles.dataContainer}>
           {selectedRecipe.ingredients.map((ingredient) => (
             <ListItem key={ingredient}>{"\u2022" + " " + ingredient}</ListItem>
           ))}
-        </Card>
+        </View>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>Steps</Text>
         </View>
-        <Card style={styles.card}>
+        <View style={styles.dataContainer}>
           {selectedRecipe.steps.map((step) => (
             <ListItem key={step}>{"\u2022" + " " + step}</ListItem>
           ))}
-        </Card>
+        </View>
       </ScrollView>
     </View>
   );
@@ -91,7 +91,7 @@ RecipeDetailsScreen.navigationOptions = (navigationData) => {
 const styles = StyleSheet.create({
   screen: {
     paddingHorizontal: 10,
-    paddingVertical: 15,
+    paddingVertical: 20,
     backgroundColor: Colors.secondaryColor
   },
 
@@ -112,10 +112,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primaryColor,
   },
 
-  card: {
-    marginTop: 10,
-    marginHorizontal: 40
-  },
 
   titleContainer: {
     marginTop: 30
@@ -125,12 +121,24 @@ const styles = StyleSheet.create({
     fontFamily: "open-sans-bold",
     fontSize: 22,
     textAlign: "center",
-    color: Colors.primaryColor
+    color: Colors.accentColor
   },
 
   listItem: {
     padding: 10,
   },
+
+  dataContainer: {
+    marginVertical: 10,
+    marginHorizontal: 30,
+    borderColor: Colors.accentColor,
+    borderRadius: 30,
+    borderWidth: 4
+  },
+  
+  data: {
+    color: Colors.primaryColor,
+  }
 });
 
 export default RecipeDetailsScreen;

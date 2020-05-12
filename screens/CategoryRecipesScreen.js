@@ -1,40 +1,19 @@
 import React from "react";
-import { View, Text, StyleSheet, FlatList, Platform } from "react-native";
 
-import Colors from "../constants/Colors";
-import RecipeItem from "../components/RecipeItem";
+import RecipeList from "../components/RecipeList";
 
-import { CATEGORIES, MEALS } from "../data/dummy-data";
+import { CATEGORIES, RECIPES } from "../data/dummy-data";
 
 const CategoryRecipesScreen = (props) => {
   const catId = props.navigation.getParam("categoryId");
 
-  const displayedMeals = MEALS.filter(
-    (meal) => meal.categoryIds.indexOf(catId) >= 0
+  const displayedRecipes = RECIPES.filter(
+    (recipe) => recipe.categoryIds.indexOf(catId) >= 0
   );
 
-  const renderRecipeItem = (itemData) => {
-    return (
-      <RecipeItem
-        title={itemData.item.title}
-        image={itemData.item.imageUrl}
-        duration={itemData.item.duration}
-        complexity={itemData.item.complexity}
-        affordability={itemData.item.affordability}
-        onSelectRecipe={() => {}}
-      />
-    );
-  };
+  
 
-  return (
-    <View style={styles.screen}>
-      <FlatList
-        style={{ width: "95%" }}
-        data={displayedMeals}
-        renderItem={renderRecipeItem}
-      />
-    </View>
-  );
+  return <RecipeList listData={displayedRecipes} navigation={props.navigation} />
 };
 
 CategoryRecipesScreen.navigationOptions = (navigationData) => {
@@ -47,12 +26,5 @@ CategoryRecipesScreen.navigationOptions = (navigationData) => {
   };
 };
 
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 
 export default CategoryRecipesScreen;

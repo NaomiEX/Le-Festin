@@ -3,18 +3,22 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity,
+  TouchableNativeFeedback,
   ImageBackground,
 } from "react-native";
+
+import DefaultText from "./DefaultText";
+import Colors from "../constants/Colors";
 
 const RecipeItem = (props) => {
   return (
     <View style={styles.recipeItem}>
-      <TouchableOpacity onPress={props.onSelectRecipe}>
+      <TouchableNativeFeedback useForeground={true} onPress={props.onSelectRecipe}>
         <View>
           <View style={{ ...styles.recipeRow, ...styles.recipeMain }}>
             <ImageBackground
               source={{ uri: props.image }}
+              blurRadius={3}
               style={styles.bgImage}
             >
               <View style={styles.titleContainer}>
@@ -25,12 +29,12 @@ const RecipeItem = (props) => {
             </ImageBackground>
           </View>
           <View style={{ ...styles.recipeRow, ...styles.recipeDetail }}>
-            <Text>{props.duration}m</Text>
-            <Text>{props.complexity.toUpperCase()}</Text>
-            <Text>{props.affordability.toUpperCase()}</Text>
+            <DefaultText>{props.duration}m</DefaultText>
+            <DefaultText>{props.complexity.toUpperCase()}</DefaultText>
+            <DefaultText>{props.affordability.toUpperCase()}</DefaultText>
           </View>
         </View>
-      </TouchableOpacity>
+      </TouchableNativeFeedback>
     </View>
   );
 };
@@ -43,7 +47,7 @@ const styles = StyleSheet.create({
   recipeItem: {
     height: 200,
     width: "100%",
-    backgroundColor: "#e5e5e5",
+    backgroundColor: "rgba(250,116,79, 0.9)",
     marginTop: 10,
     borderRadius: 10,
     overflow: 'hidden'
@@ -60,13 +64,20 @@ const styles = StyleSheet.create({
   },
 
   titleContainer: {
-    backgroundColor: "rgba(0,0,0,0.5)",
+    backgroundColor: "rgba(0,0,0,0.4)",
     paddingVertical: 5,
-    paddingHorizontal: 12,
+    paddingHorizontal: 20,
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 
   title: {
-    fontFamily: "open-sans-bold",
+    fontFamily: "open-sans",
     fontSize: 20,
     color: "white",
 
@@ -74,6 +85,7 @@ const styles = StyleSheet.create({
   },
 
   recipeDetail: {
+    
     paddingHorizontal: 10,
     justifyContent: "space-around",
     alignItems: 'center',

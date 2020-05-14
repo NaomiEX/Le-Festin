@@ -5,13 +5,14 @@ import {
   StyleSheet,
   Switch,
   Platform,
-  Alert,
+  Dimensions,
   Button,
+  ToastAndroid,
+  Toas
 } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { useDispatch } from "react-redux";
 
-import Modal from "react-native-modal";
 
 import { setFilters } from "../store/actions/recipes";
 
@@ -19,6 +20,7 @@ import CustomHeaderButton from "../components/HeaderButton";
 import DefaultText from "../components/DefaultText";
 import Colors from "../constants/Colors";
 import Card from "../components/Card";
+
 
 const FilterCriteria = (props) => {
   return (
@@ -35,6 +37,13 @@ const FilterCriteria = (props) => {
   );
 };
 
+const Toast = (props) => {
+  if(props.visible) {
+    ToastAndroid.show("Filters set!", ToastAndroid.SHORT);
+  }
+  return null;
+};
+
 const FiltersScreen = (props) => {
   const { navigation } = props;
 
@@ -43,11 +52,13 @@ const FiltersScreen = (props) => {
   const [isVegan, setIsVegan] = useState(false);
   const [isVegetarian, setIsVegetarian] = useState(false);
 
-  const [openModal, setOpenModal] = useState(false);
+  const [openToast, setOpenToast] = useState(false);
 
-  const modalHandler = (action) => {
-    action ? setOpenModal(true) : setOpenModal(false);
+  const toastHandler = (action) => {
+    action ? setOpenToast(true) : setOpenToast(false);
   };
+
+  
 
   const dispatch = useDispatch();
 
@@ -59,30 +70,22 @@ const FiltersScreen = (props) => {
       vegetarian: isVegetarian,
     };
 
-    modalHandler(true);
+    toastHandler(true);
 
     dispatch(setFilters(appliedFilters));
-  }, [isGlutenFree, isLactoseFree, isVegan, isVegetarian, dispatch, openModal]);
+  }, [isGlutenFree, isLactoseFree, isVegan, isVegetarian, dispatch, openToast]);
 
   useEffect(() => {
     navigation.setParams({ save: saveFilters });
   }, [saveFilters]);
 
+  useEffect(() => {
+    setOpenToast(false);
+  }, [openToast]);
+
   return (
     <View style={styles.screen}>
-        <Modal backdropColor={Colors.secondaryColor} isVisible={openModal}>
-          <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <Text>Hello</Text>
-            <Button
-              title="Ok"
-              onPress={() => {
-                modalHandler(false);
-              }}
-            />
-          </View>
-        </Modal>
+      <Toast visible={openToast}/>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Available Filters</Text>
       </View>
@@ -183,6 +186,27 @@ const styles = StyleSheet.create({
   switch: {
     transform: [{ scaleX: 1.3 }, { scaleY: 1.3 }],
   },
+
+  ToastContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: 'center'
+  },
+
+  ToastContentContainer: {
+    width: Dimensions.get('window').width,
+    height: 100,
+    backgroundColor: Colors.primaryColor,
+    justifyContent: "center",
+    alignItems: "center",
+    borderColor: Colors.secondaryColor,
+    borderWidth: 2  
+  },
+
+  ToastText: {
+    color: Colors.secondaryColor,
+    fontFamily: 'open-sans-bold'
+  }
 });
 
 export default FiltersScreen;

@@ -87,6 +87,7 @@ RecipeDetailsScreen.navigationOptions = (navigationData) => {
 
   return {
     headerTitle: recipeTitle,
+
     headerRight: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item title="Favourite" iconName={isFavourite ? "ios-star" : "ios-star-outline"} onPress={toggleFavourite} />

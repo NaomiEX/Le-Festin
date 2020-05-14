@@ -1,33 +1,46 @@
-import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Button,
-  ScrollView,
-  Image,
-} from "react-native";
+import React, { useEffect, useCallback } from "react";
+import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
-
-import { RECIPES } from "../data/dummy-data";
 
 import CustomHeaderButton from "../components/HeaderButton";
 import DefaultText from "../components/DefaultText";
-import Card from "../components/Card";
 import Colors from "../constants/Colors";
+import Card from "../components/Card";
+import { toggleFavourite } from "../store/actions/recipes";
 
 const ListItem = (props) => {
   return (
     <View style={styles.listItem}>
-      <DefaultText style={styles.data}>{props.children}</DefaultText>
+      <DefaultText>{props.children}</DefaultText>
     </View>
   );
 };
 
 const RecipeDetailsScreen = (props) => {
+  const availableRecipes = useSelector((state) => state.recipes.recipes);
   const recipeId = props.navigation.getParam("recipeId");
+  const isCurrentRecipeFavourite = useSelector((state) =>
+    state.recipes.favouriteRecipes.some((recipe) => recipe.id === recipeId)
+  );
 
-  const selectedRecipe = RECIPES.find((recipe) => recipe.id === recipeId);
+  const selectedRecipe = availableRecipes.find(
+    (recipe) => recipe.id === recipeId
+  );
+
+  const dispatch = useDispatch();
+
+  const toggleFavouriteHandler = useCallback(() => {
+    dispatch(toggleFavourite(recipeId));
+  }, [dispatch, recipeId]);
+
+  useEffect(() => {
+    props.navigation.setParams({ toggleFav: toggleFavouriteHandler });
+  }, [toggleFavouriteHandler]);
+
+  useEffect(() => {
+    props.navigation.setParams({ isFav: isCurrentRecipeFavourite });
+  }, [isCurrentRecipeFavourite]);
 
   return (
     <View style={styles.screen}>
@@ -49,40 +62,34 @@ const RecipeDetailsScreen = (props) => {
         <View style={styles.titleContainer}>
           <Text style={styles.title}>Ingredients</Text>
         </View>
-        <View style={styles.dataContainer}>
+        <Card style={styles.dataContainer}>
           {selectedRecipe.ingredients.map((ingredient) => (
             <ListItem key={ingredient}>{"\u2022" + " " + ingredient}</ListItem>
           ))}
-        </View>
+        </Card>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>Steps</Text>
         </View>
-        <View style={styles.dataContainer}>
+        <Card style={styles.dataContainer}>
           {selectedRecipe.steps.map((step) => (
             <ListItem key={step}>{"\u2022" + " " + step}</ListItem>
           ))}
-        </View>
+        </Card>
       </ScrollView>
     </View>
   );
 };
 
 RecipeDetailsScreen.navigationOptions = (navigationData) => {
-  const recipeId = navigationData.navigation.getParam("recipeId");
-
-  const selectedRecipe = RECIPES.find((recipe) => recipe.id === recipeId);
+  const toggleFavourite = navigationData.navigation.getParam("toggleFav");
+  const recipeTitle = navigationData.navigation.getParam("recipeTitle");
+  const isFavourite = navigationData.navigation.getParam("isFav");
 
   return {
-    headerTitle: selectedRecipe.title,
+    headerTitle: recipeTitle,
     headerRight: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
-        <Item
-          title="Favourite"
-          iconName="ios-star"
-          onPress={() => {
-            console.log("Item favourited");
-          }}
-        />
+        <Item title="Favourite" iconName={isFavourite ? "ios-star" : "ios-star-outline"} onPress={toggleFavourite} />
       </HeaderButtons>
     ),
   };
@@ -92,7 +99,7 @@ const styles = StyleSheet.create({
   screen: {
     paddingHorizontal: 10,
     paddingVertical: 20,
-    backgroundColor: Colors.secondaryColor
+    backgroundColor: Colors.secondaryColor,
   },
 
   imageContainer: {
@@ -112,16 +119,15 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primaryColor,
   },
 
-
   titleContainer: {
-    marginTop: 30
+    marginTop: 30,
   },
 
   title: {
     fontFamily: "open-sans-bold",
     fontSize: 22,
     textAlign: "center",
-    color: Colors.accentColor
+    color: Colors.accentColor,
   },
 
   listItem: {
@@ -131,14 +137,7 @@ const styles = StyleSheet.create({
   dataContainer: {
     marginVertical: 10,
     marginHorizontal: 30,
-    borderColor: Colors.accentColor,
-    borderRadius: 30,
-    borderWidth: 4
   },
-  
-  data: {
-    color: Colors.primaryColor,
-  }
 });
 
 export default RecipeDetailsScreen;

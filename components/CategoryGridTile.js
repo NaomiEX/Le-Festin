@@ -6,9 +6,23 @@ import {
   StyleSheet,
   Platform,
   TouchableNativeFeedback,
+  Image,
 } from "react-native";
 
+import { useSelector } from "react-redux";
+
+import Colors from "../constants/Colors";
+import DefaultText from "../components/DefaultText";
+
 const CategoryGridTile = (props) => {
+  const availableRecipes = useSelector(
+    (state) => state.recipes.filteredRecipes
+  );
+
+  const displayedRecipes = availableRecipes.filter(
+    (recipe) => recipe.categoryIds.indexOf(props.id) >= 0
+  );
+
   let TouchableComponent = TouchableOpacity;
 
   if (Platform.OS === "android" && Platform.Version >= 21) {
@@ -21,10 +35,16 @@ const CategoryGridTile = (props) => {
         <View
           style={{ ...styles.container, ...{ backgroundColor: props.color } }}
         >
+          <View style={styles.imageContainer}>
+            <Image style={styles.image} source={props.image} />
+          </View>
           <View style={styles.titleContainer}>
-            <Text style={styles.title} numberOfLines={2}>
+            <DefaultText style={styles.title} numberOfLines={2}>
               {props.title}
-            </Text>
+            </DefaultText>
+          </View>
+          <View style={styles.infoContainer}>
+          <DefaultText>Number of Recipes: {displayedRecipes.length}</DefaultText>
           </View>
         </View>
       </TouchableComponent>
@@ -36,32 +56,47 @@ const styles = StyleSheet.create({
   gridItem: {
     flex: 1,
     margin: 6,
-    height: 150,
+    height: 300,
     borderRadius: 10,
-    overflow: Platform.OS === "android" && Platform.Version >= 21 ? "hidden" : "visible",
-    elevation: 5,
+    overflow:
+      Platform.OS === "android" && Platform.Version >= 21
+        ? "hidden"
+        : "visible",
   },
 
   container: {
-    flex: 1,
     borderRadius: 10,
     shadowColor: "black",
     shadowOpacity: 0.26,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 10,
-    padding: 15,
-    justifyContent: "center",
+    paddingVertical: 50,
     alignItems: "center",
   },
 
+  imageContainer: {
+    width: 120,
+    height: 120,
+    borderRadius: 120 / 2,
+    overflow: "hidden",
+  },
+
+  image: {
+    width: "100%",
+    height: "100%",
+  },
+
   titleContainer: {
-    width: "80%",
+    width: "90%",
+    paddingTop: 25, 
+  },
+
+  infoContainer: {
+    width: "90%",
   },
 
   title: {
-    fontFamily: "open-sans-bold",
-    fontSize: 18,
-    textAlign: "center",
+    fontSize: 20,
   },
 });
 

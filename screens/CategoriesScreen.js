@@ -1,11 +1,8 @@
 import React from "react";
 import {
   View,
-  Text,
   StyleSheet,
-  Button,
   FlatList,
-  TouchableOpacity,
 } from "react-native";
 
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
@@ -20,8 +17,10 @@ const CategoriesScreen = (props) => {
   const renderGridItem = (itemData) => {
     return (
       <CategoryGridTile
+        id={itemData.item.id}
         title={itemData.item.title}
         color={itemData.item.color}
+        image={itemData.item.image}
         onSelect={() => {
           props.navigation.navigate({
             routeName: "CategoryRecipes",

@@ -2,16 +2,16 @@ import Category from "../models/category";
 import Recipe from "../models/recipe";
 
 export const CATEGORIES = [
-    new Category('c1', 'Italian', '#f5428d'),
-    new Category('c2',  'Quick & Easy', '#f54242'),
-    new Category('c3', 'Hamburgers', '#f5a442'),
-    new Category('c4', 'German', '#f5d142'),
-    new Category('c5', 'Light & Lovely', '#368dff'),
-    new Category('c6', 'Exotic', '#41d95d'),
-    new Category('c7', 'Breakfast', '#9eecff'),
-    new Category('c8', 'Asian', '#b9ffb0'),
-    new Category('c9', 'French', '#ffc7ff'),
-    new Category('c10', 'Summer', '#47fced')
+    new Category('c1', 'Italian', '#ff6f69', require('../assets/pasta.jpg') ),
+    new Category('c2',  'Quick & Easy', '#f0b7a4', require('../assets/tc.jpg') ),
+    new Category('c3', 'Guilty Pleasures', '#32afa9' , require('../assets/fast_food.jpg') ),
+    new Category('c4', 'German', '#6886c5', require('../assets/schnitzel4.jpg') ),
+    new Category('c5', 'Light & Lovely', '#ba6b57', require('../assets/salad.jpg') ),
+    new Category('c6', 'Exotic', '#f1935c', require('../assets/scallops.jpg') ),
+    new Category('c7', 'Breakfast', '#7bc0a3', require('../assets/waffle.jpg') ),
+    new Category('c8', 'Asian', '#587850', require('../assets/gyoza.jpg') ),
+    new Category('c9', 'French', '#8b76a5', require('../assets/coq_au_vin.jpg') ),
+    new Category('c10', 'Summer', '#d291bc', require('../assets/chicken.jpg') )
 ];
 
 export const RECIPES = [

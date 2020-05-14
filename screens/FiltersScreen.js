@@ -1,6 +1,20 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { View, Text, StyleSheet, Switch, Platform } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Switch,
+  Platform,
+  Alert,
+  Button,
+} from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import { useDispatch } from "react-redux";
+
+import Modal from "react-native-modal";
+
+import { setFilters } from "../store/actions/recipes";
+
 import CustomHeaderButton from "../components/HeaderButton";
 import DefaultText from "../components/DefaultText";
 import Colors from "../constants/Colors";
@@ -29,6 +43,14 @@ const FiltersScreen = (props) => {
   const [isVegan, setIsVegan] = useState(false);
   const [isVegetarian, setIsVegetarian] = useState(false);
 
+  const [openModal, setOpenModal] = useState(false);
+
+  const modalHandler = (action) => {
+    action ? setOpenModal(true) : setOpenModal(false);
+  };
+
+  const dispatch = useDispatch();
+
   const saveFilters = useCallback(() => {
     const appliedFilters = {
       glutenFree: isGlutenFree,
@@ -37,8 +59,10 @@ const FiltersScreen = (props) => {
       vegetarian: isVegetarian,
     };
 
-    console.log(appliedFilters);
-  }, [isGlutenFree, isLactoseFree, isVegan, isVegetarian]);
+    modalHandler(true);
+
+    dispatch(setFilters(appliedFilters));
+  }, [isGlutenFree, isLactoseFree, isVegan, isVegetarian, dispatch, openModal]);
 
   useEffect(() => {
     navigation.setParams({ save: saveFilters });
@@ -46,10 +70,22 @@ const FiltersScreen = (props) => {
 
   return (
     <View style={styles.screen}>
+        <Modal backdropColor={Colors.secondaryColor} isVisible={openModal}>
+          <View
+            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          >
+            <Text>Hello</Text>
+            <Button
+              title="Ok"
+              onPress={() => {
+                modalHandler(false);
+              }}
+            />
+          </View>
+        </Modal>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Available Filters</Text>
       </View>
-
       <Card style={styles.allFiltersContainer}>
         <FilterCriteria
           criteria="Gluten-free"

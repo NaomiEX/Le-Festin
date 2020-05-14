@@ -1,12 +1,20 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
-import { enableScreens } from 'react-native-screens';
+import { enableScreens } from "react-native-screens";
+import { createStore, combineReducers } from "redux";
+import { Provider } from "react-redux";
 
-import RecipeNavigator from "./navigation/RecipeNavigator";
+import MainNavigator from "./navigation/RecipeNavigator";
+import recipeReducer from "./store/reducers/recipes";
 
 enableScreens();
+
+const rootReducer = combineReducers({
+  recipes: recipeReducer,
+});
+
+const store = createStore(rootReducer);
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -29,7 +37,9 @@ export default function App() {
     );
   }
 
-  return <RecipeNavigator />;
+  return (
+    <Provider store={store}>
+      <MainNavigator />
+    </Provider>
+  );
 }
-
-const styles = StyleSheet.create({});

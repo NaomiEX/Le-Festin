@@ -1,12 +1,16 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList, Platform } from "react-native";
+import { useSelector } from 'react-redux';
 
 import Colors from "../constants/Colors";
 
 import RecipeItem from "../components/RecipeItem";
 
 const RecipeList = (props) => {
+  const favouriteRecipes = useSelector(state => state.recipes.favouriteRecipes);
+
   const renderRecipeItem = (itemData) => {
+    const isFavourite = favouriteRecipes.some(recipe => recipe.id === itemData.item.id);
     return (
       <RecipeItem
         title={itemData.item.title}
@@ -19,6 +23,8 @@ const RecipeList = (props) => {
             routeName: "RecipeDetail",
             params: {
               recipeId: itemData.item.id,
+              recipeTitle: itemData.item.title,
+              isFav: isFavourite
             },
           });
         }}

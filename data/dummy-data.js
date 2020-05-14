@@ -2,16 +2,16 @@ import Category from "../models/category";
 import Recipe from "../models/recipe";
 
 export const CATEGORIES = [
-    new Category('c1', 'Italian', '#ff6f69', require('../assets/pasta.jpg') ),
-    new Category('c2',  'Quick & Easy', '#ffac8e', require('../assets/tangerine_chicken.jpg') ),
-    new Category('c3', 'Guilty Pleasures', '#32afa9' , require('../assets/fast_food.jpg') ),
-    new Category('c4', 'German', '#6886c5', require('../assets/schnitzel.jpg') ),
-    new Category('c5', 'Light & Lovely', '#ba6b57', require('../assets/salad.jpg') ),
-    new Category('c6', 'Exotic', '#f1935c', require('../assets/scallops.jpg') ),
-    new Category('c7', 'Breakfast', '#7bc0a3', require('../assets/waffle.jpg') ),
-    new Category('c8', 'Asian', '#587850', require('../assets/gyoza.jpg') ),
-    new Category('c9', 'French', '#8b76a5', require('../assets/coq_au_vin.jpg') ),
-    new Category('c10', 'Summer', '#d291bc', require('../assets/chicken.jpg') )
+    new Category('c1', 'Italian', '#ff6f69', require('../assets/cat_pasta.jpg') ),
+    new Category('c2',  'Quick & Easy', '#ffac8e', require('../assets/cat_tangerine_chicken.jpg') ),
+    new Category('c3', 'Guilty Pleasures', '#32afa9' , require('../assets/cat_fast_food.jpg') ),
+    new Category('c4', 'German', '#6886c5', require('../assets/cat_schnitzel.jpg') ),
+    new Category('c5', 'Light & Lovely', '#ba6b57', require('../assets/cat_salad.jpg') ),
+    new Category('c6', 'Exotic', '#f1935c', require('../assets/cat_scallops.jpg') ),
+    new Category('c7', 'Breakfast', '#7bc0a3', require('../assets/cat_waffle.jpg') ),
+    new Category('c8', 'Asian', '#587850', require('../assets/cat_gyoza.jpg') ),
+    new Category('c9', 'French', '#8b76a5', require('../assets/cat_coq_au_vin.jpg') ),
+    new Category('c10', 'Summer', '#d291bc', require('../assets/cat_chicken.jpg') )
 ];
 
 export const RECIPES = [
@@ -21,7 +21,7 @@ export const RECIPES = [
         'Spaghetti Bolognese',
         'affordable',
         'simple',
-        'https://www.knorr.com/content/dam/unilever/global/recipe_image/125/12527/125279-default.jpg/_jcr_content/renditions/cq5dam.web.800.600.jpeg',
+        require('../assets/spaghetti_bolognaise.jpg'),
         20,
         [
           '4 Tomatoes',
@@ -52,7 +52,7 @@ export const RECIPES = [
         'Toast Hawaii',
         'affordable',
         'simple',
-        'https://www.gutekueche.at/img/rezept/2000/hawaii-toast.jpg',
+        require('../assets/hawaii_toast.jpg'),
         10,
         [
           '1 Slice White Bread',
@@ -78,7 +78,7 @@ export const RECIPES = [
         'Classic Hamburger',
         'pricey',
         'simple',
-        'https://cdn.pixabay.com/photo/2014/10/23/18/05/burger-500054_1280.jpg',
+        require('../assets/hamburger.jpg'),
         45,
         [
           '300g Cattle Hack',
@@ -107,7 +107,7 @@ export const RECIPES = [
         'Wiener Schnitzel',
         'luxurious',
         'challenging',
-        'https://cdn.pixabay.com/photo/2018/03/31/19/29/schnitzel-3279045_1280.jpg',
+        require('../assets/schnitzel.jpg'),
         60,
         [
           '8 Veal Cutlets',
@@ -140,7 +140,7 @@ export const RECIPES = [
         'Salad with Smoked Salmon',
         'luxurious',
         'simple',
-        'https://cdn.pixabay.com/photo/2016/10/25/13/29/smoked-salmon-salad-1768890_1280.jpg',
+        require("../assets/salmon_salad.jpg"),
         15,
         [
           'Arugula',
@@ -172,7 +172,7 @@ export const RECIPES = [
         'Delicious Orange Mousse',
         'affordable',
         'hard',
-        'https://cdn.pixabay.com/photo/2017/05/01/05/18/pastry-2274750_1280.jpg',
+        require('../assets/orange_mousse.jpg'),
         240,
         [
           '4 Sheets of Gelatine',
@@ -205,7 +205,7 @@ export const RECIPES = [
         'Pancakes',
         'affordable',
         'simple',
-        'https://cdn.pixabay.com/photo/2018/07/10/21/23/pancake-3529653_1280.jpg',
+        require('../assets/pancakes.jpg'),
         20,
         [
           '1 1/2 Cups all-purpose Flour',
@@ -234,7 +234,7 @@ export const RECIPES = [
         'Creamy Indian Chicken Curry',
         'pricey',
         'challenging',
-        'https://cdn.pixabay.com/photo/2018/06/18/16/05/indian-food-3482749_1280.jpg',
+        require("../assets/curry.jpg"),
         35,
         [
           '4 Chicken Breasts',
@@ -265,7 +265,7 @@ export const RECIPES = [
         'Chocolate Souffle',
         'affordable',
         'hard',
-        'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fassets.marthastewart.com%2Fstyles%2Fwmax-750%2Fd32%2Fmd106529_msl_09_02_10_as_raw-089%2Fmd106529_msl_09_02_10_as_raw-089_horiz.jpg%3Fitok%3DFRV1x3sc',
+        require('../assets/souffle.jpg'),
         45,
         [
           '1 Teaspoon melted Butter',
@@ -311,7 +311,7 @@ export const RECIPES = [
         'Asparagus Salad',
         'luxurious',
         'simple',
-        'https://cdn.pixabay.com/photo/2018/04/09/18/26/asparagus-3304997_1280.jpg',
+        require('../assets/asparagus_salad.jpg'),
         30,
         [
           'White and Green Asparagus',
@@ -341,7 +341,7 @@ export const RECIPES = [
         'Spaghetti alla carbonara',
         'affordable',
         'simple',
-        'https://img.taste.com.au/nagBw08c/taste/2016/11/celebrating-australian-bacon-week-105426-3.jpeg',
+        require('../assets/carbonara.jpeg'),
         20,
         [
           '200g Spaghetti',
@@ -374,7 +374,7 @@ export const RECIPES = [
         'Paccheri with lamb ragù',
         'pricey',
         'challenging',
-        'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2018/5/14/0/FNM_060118-Pappardelle-with-Slow-Cooker-Beef-Ragu_s4x3.jpg.rend.hgtvcom.826.620.suffix/1526308792599.jpeg',        
+        require('../assets/paccheri.jpeg'),        
         50,
         [
           '500g Lamb Mince',
@@ -413,7 +413,7 @@ export const RECIPES = [
         'Gamberi alla busara',
         'pricey',
         'simple',
-        'https://gbc-cdn-public-media.azureedge.net/img63580.768x512.jpg',
+        require('../assets/gamberi_alla_busara.jpg'),
         30,
         [
           '3 tbsp of virgin olive oil',
@@ -453,7 +453,7 @@ export const RECIPES = [
         'Acquacotta',
         'pricey',
         'simple',
-        'https://gbc-cdn-public-media.azureedge.net/img81216.768x512.jpg',
+        require('../assets/acquacotta.jpg'),
         60,
         [
           '10g of dried porcini mushrooms',
@@ -495,7 +495,7 @@ export const RECIPES = [
         'Seasoned fries',
         'affordable',
         'simple',
-        'https://thenypost.files.wordpress.com/2018/08/istock-618214356.jpg?quality=80&strip=all',
+        require('../assets/fries.jpg'),
         15,
         [
           '6 cups frozen shoestring potatoes',
@@ -521,7 +521,7 @@ export const RECIPES = [
         'Grilled chicken sandwich',
         'affordable',
         'simple',
-        'https://pinchofyum.com/wp-content/uploads/Chicken-Sandwich-Feature-1.jpg',
+        require('../assets/chicken_sandwich.jpg'),
         30,
         [
           '4 boneless skinless chicken breast halves',
@@ -556,7 +556,7 @@ export const RECIPES = [
         'Neapolitan Pizza',
         'affordable',
         'hard',
-        'https://www.sbs.com.au/food/sites/sbs.com.au.food/files/frying-pan-neapolitan-pizza.jpg',
+        require('../assets/neapolitan_pizza.jpg'),
         70,
         [
           '500 grams* Tipo 00 or all-purpose flour',
@@ -606,7 +606,7 @@ export const RECIPES = [
         'Almond-filled stollen',
         'pricey',
         'hard',
-        'https://nationalpostcom.files.wordpress.com/2016/12/gettyimages-600087744.jpg?w=940&quality=80',
+        require('../assets/stollen.jpg'),
         90,
         [
           '1-3/4 cups chopped mixed candied fruit',
@@ -661,7 +661,7 @@ export const RECIPES = [
         'German potato salad',
         'affordable',
         'challenging',
-        'https://www.tasteofhome.com/wp-content/uploads/2018/01/Slow-Cooker-German-Potato-Salad_EXPS_SDJJ17_141691_D02_16_8b-696x696.jpg',
+        require('../assets/potato_salad.jpg'),
         240,
         [
           '3 pounds red potatoes',
@@ -699,7 +699,7 @@ export const RECIPES = [
         'Pork & apple roast',
         'pricey',
         'simple',
-        'https://dam.kraftheinzcompany.com/adaptivemedia/rendition/568612_1500x1000.tif?id=e8912c3eeacc35ed4c2cc769e3dacc996a290372&ht=1000&wd=1500',
+        require('../assets/pork_n_apple_roast.jpg'),
         55,
         [
           '1 Tbsp. brown sugar',
@@ -734,7 +734,7 @@ export const RECIPES = [
         'Duck liver pâté',
         'luxurious',
         'hard',
-        'https://www.dairy.com.au/-/media/dairy/images/recipes/9631.jpg?h=1000&iar=1&la=en&w=1600&hash=DD8F7116A126B92D00B1083C8CC8DA5FFC2968E3',
+        require('../assets/pate.jpg'),
         55,
         [
           '100ml orange juice',
@@ -780,7 +780,7 @@ export const RECIPES = [
         'Bacon & eggs with cheese',
         'affordable',
         'simple',
-        'https://assets.myfoodandfamily.com/adaptivemedia/rendition/583535_3000x2000.jpg?id=e0c28040efb28583aac7263bfee12c71765101b4&ht=650&wd=1004&clid=pim',
+        require('../assets/bacon_n_eggs.jpg'),
         30,
         [
           '5 eggs',
@@ -814,7 +814,7 @@ export const RECIPES = [
         'Belgian waffles',
         'affordable',
         'simple',
-        'https://lilluna.com/wp-content/uploads/2019/05/buttermilk-waffles-resize-5.jpg',
+        require('../assets/waffles.jpg'),
         25,
         [
           '2 cups flour',
@@ -845,7 +845,7 @@ export const RECIPES = [
         'French toast casserole',
         'pricey',
         'challenging',
-        'https://tastesbetterfromscratch.com/wp-content/uploads/2014/06/Baked-French-Toast-Casserole-4.jpg',
+        require('../assets/casserole.jpg'),
         50,
         [
           '2 cups canned light coconut milk',
@@ -885,7 +885,7 @@ export const RECIPES = [
         'Veggie gyoza',
         'affordable',
         'challenging',
-        'https://i1.wp.com/www.boskitchen.com/wp-content/uploads/2019/01/IMG_1420-2.jpg?resize=1536%2C1920',
+        require('../assets/veggie_gyoza.jpg'),
         55,
         [
           '3 cups plain flour',
@@ -928,7 +928,7 @@ export const RECIPES = [
         'Kung pao chicken',
         'pricey',
         'challenging',
-        'https://foodal.com/wp-content/uploads/2015/05/The-Best-Kung-Pao-Chicken-Recipe.jpg',
+        require('../assets/kung_pao_chicken.jpg'),
         35,
         [
           '2 tablespoon Szechuan peppercorns',

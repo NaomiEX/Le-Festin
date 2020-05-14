@@ -16,7 +16,7 @@ const RecipeItem = (props) => {
         <View>
           <View style={{ ...styles.recipeRow, ...styles.recipeMain }}>
             <ImageBackground
-              source={{ uri: props.image }}
+              source={props.image}
               blurRadius={3}
               style={styles.bgImage}
             >

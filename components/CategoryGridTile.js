@@ -44,7 +44,7 @@ const CategoryGridTile = (props) => {
             </DefaultText>
           </View>
           <View style={styles.infoContainer}>
-          <DefaultText>Number of Recipes: {displayedRecipes.length}</DefaultText>
+          <DefaultText>{displayedRecipes.length} Recipes available</DefaultText>
           </View>
         </View>
       </TouchableComponent>

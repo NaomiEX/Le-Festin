@@ -47,7 +47,7 @@ const RecipeDetailsScreen = (props) => {
       <ScrollView>
         <View style={styles.imageContainer}>
           <Image
-            source={{ uri: selectedRecipe.imageUrl }}
+            source={selectedRecipe.image}
             style={styles.image}
           />
 

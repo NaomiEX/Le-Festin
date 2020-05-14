@@ -5,7 +5,7 @@ class Recipe {
     title,
     affordability,
     complexity,
-    imageUrl,
+    image,
     duration,
     ingredients,
     steps,
@@ -17,7 +17,7 @@ class Recipe {
       this.id = id;
       this.categoryIds = categoryIds;
       this.title = title;
-      this.imageUrl = imageUrl;
+      this.image = image;
       this.ingredients = ingredients;
       this.steps = steps;
       this.duration = duration;

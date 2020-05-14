@@ -14,7 +14,7 @@ const RecipeList = (props) => {
     return (
       <RecipeItem
         title={itemData.item.title}
-        image={itemData.item.imageUrl}
+        image={itemData.item.image}
         duration={itemData.item.duration}
         complexity={itemData.item.complexity}
         affordability={itemData.item.affordability}

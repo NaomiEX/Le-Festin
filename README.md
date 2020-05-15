@@ -1,1 +1,2 @@
 # Recipes App
+This app was created for a Computer Science project. The app functions as a cookbook where you are able to view various recipes based on the category you choose. In addition, you can mark certain recipes as favourites and henceforth view them from the Favourites tab. Different users might have different dietary needs, thus the app offers a filter function that will remove all recipes not matching the set filters.

@@ -1,5 +1,7 @@
 # Le Festin
-This app was created for a Computer Science project. The app functions as a cookbook where you can view, favourite, and filter recipes.
+This app was created for a Computer Science project. 
+
+The app functions as a cookbook where you can view, favourite, and filter recipes.
 
 ![Logo](./Images/logo.png)
 

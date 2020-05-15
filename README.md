@@ -21,7 +21,7 @@ Install Expo in the Play Store (Android) or the App Store (iOS)
 
 ### Getting access to the app
 
-The app is published at https://expo.io/@naomiex/le-festin. Click on the link and select Open project using Expo (on your mobile device), which will automatically open the Expo app on your phone where, after a short loading screen, you will be greeted with the landing screen of the app.
+The app is published at https://expo.io/@naomiex/le-festin. Click on the link and select Open project using Expo (on your mobile device), which will automatically open the Expo app where, after a short loading screen, you will be greeted with the landing screen of the app.
 
 ## General info
 

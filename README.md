@@ -1,5 +1,5 @@
 # Le Festin
-This app was created for a Computer Science project. 
+This app was created by Michelle Adeline for a Computer Science project. 
 
 The app functions as a cookbook where you can view, favourite, and filter recipes.
 

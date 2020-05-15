@@ -24,6 +24,10 @@ When the user taps on the icon in the top left of the screen, a side-drawer will
 
 In the filters screen users are able to turn on and off certain filter criteria such as: gluten-free, vegan, vegetarian, lactose-free. Once they have set the filters to their desire, they can tap on the save icon on the top right to save their preferences.
 
+## Demonstration
+
+![Demo](./video/demonstration.gif)
+
 ## Technologies
 * Node.js version 12.16.3
 * Expo SDK v37.0.0

@@ -22,7 +22,6 @@ Install Expo in the Play Store (Android) or the App Store (iOS)
 The app is published at https://expo.io/@naomiex/le-festin. Click on the link and select Open project using Expo (on your mobile device), which will automatically open the Expo app on your phone where, after a short loading screen, you will be greeted with the landing screen of the app.
 
 ## General info
-(This app has built-in navigation, through react-navigation, thus you can freely navigate between pages, with a back button on most pages, a bottom drawer, and a side drawer.)
 
 The app's landing page is a scrollable page with several cards, each possessing an image and a title, denoting their represented category. When the card is tapped, the user will be brought to a screen with a list of recipes within that category.
 
@@ -39,6 +38,231 @@ In the filters screen users are able to turn on and off certain filter criteria 
 ## Demonstration
 
 ![Demo](./video/demonstration.gif)
+
+## Features
+* View recipes of the chosen category
+* Favourite certain recipes
+* Filter recipes to match certain criteria
+* Navigation through bottom drawer and side drawer
+
+## Code specifications
+
+This app has built-in navigation, through react-navigation, thus you can freely navigate between pages, with a back button on most pages, a bottom drawer, to navigate between All Recipes and Favourites, and a side drawer, to navigate between Recipes, Filters, and About.
+
+Default Navigation Options:
+```
+const defaultStackNavigatorOptions = {
+  headerStyle: {
+    backgroundColor: Platform.OS === "android" ? Colors.primaryColor : "",
+  },
+  headerTitleStyle: {
+    fontFamily: "open-sans-bold",
+    fontSize: 18,
+  },
+  headerBackTitleStyle: {
+    fontFamily: "open-sans",
+  },
+  headerTintColor:
+    Platform.OS === "android" ? Colors.secondaryColor : Colors.primaryColor,
+  headerTitleAlign: 'center',
+  ...TransitionPresets.SlideFromRightIOS
+};
+```
+
+Recipes Navigator:
+
+```
+const RecipesNavigator = createStackNavigator(
+  {
+    Categories: {
+      screen: CategoriesScreen,
+    },
+    CategoryRecipes: {
+      screen: CategoryRecipesScreen,
+    },
+    RecipeDetail: {
+      screen: RecipeDetailsScreen,
+    },
+  },
+  { defaultNavigationOptions: defaultStackNavigatorOptions }
+);
+
+```
+Bottom Drawer Navigator:
+```
+const tabScreenConfig = {
+  Recipes: {
+    screen: RecipesNavigator,
+    navigationOptions: {
+      tabBarLabel: "All Recipes",
+      tabBarIcon: (tabInfo) => {
+        return (
+          <Ionicons name="ios-restaurant" size={28} color={tabInfo.tintColor} />
+        );
+      },
+      tabBarColor: Colors.primaryColor,
+      tabBarLabel:
+        Platform.OS === "android" ? (
+          <Text style={{ fontFamily: "open-sans-bold" }}>All Recipes</Text>
+        ) : (
+          "All Recipes"
+        ),
+    },
+  },
+  Favourites: {
+    screen: FavouritesNavigator,
+    navigationOptions: {
+      tabBarIcon: (tabInfo) => {
+        return <Ionicons name="ios-star" size={28} color={tabInfo.tintColor} />;
+      },
+      tabBarColor: Colors.primaryColor,
+      tabBarLabel:
+        Platform.OS === "android" ? (
+          <Text style={{ fontFamily: "open-sans-bold" }}>Favourites</Text>
+        ) : (
+          "Favourites"
+        ),
+    },
+  },
+};
+
+const RecipesFavTabsNavigator =
+  Platform.OS === "android"
+    ? createMaterialBottomTabNavigator(tabScreenConfig, {
+        activeColor: Colors.secondaryColor,
+        inactiveColor: Colors.inactiveGray,
+        shifting: true,
+        barStyle: { backgroundColor: Colors.primaryColor },
+      })
+    : createBottomTabNavigator(tabScreenConfig, {
+        tabBarOptions: {
+          labelStyle: { fontFamily: "open-sans-bold" },
+          activeTintColor: Colors.primaryColor,
+        },
+      });
+
+```
+Main Navigator (Side Drawer):
+```
+const MainNavigator = createDrawerNavigator(
+  {
+    RecipesFavourites: {
+      screen: RecipesFavTabsNavigator,
+      navigationOptions: {
+        drawerLabel: "Recipes",
+        drawerIcon: (drawerInfo) => {
+          return (
+            <Ionicons
+              name="md-restaurant"
+              size={28}
+              color={drawerInfo.tintColor}
+            />
+          );
+        },
+      },
+    },
+    Filters: {
+      screen: FiltersNavigator,
+      navigationOptions: {
+        drawerIcon: (drawerInfo) => {
+          return (
+            <Ionicons name="md-switch" size={28} color={drawerInfo.tintColor} />
+          );
+        },
+      },
+    },
+    About: {
+      screen: AboutNavigator,
+      navigationOptions: {
+        drawerIcon: (drawerInfo) => {
+          return (
+            <Ionicons
+              name="md-information-circle-outline"
+              size={28}
+              color={drawerInfo.tintColor}
+            />
+          );
+        },
+      },
+    },
+  },
+  {
+    contentOptions: {
+      activeTintColor: Colors.secondaryColor,
+      inactiveTintColor: Colors.inactiveGray,
+      labelStyle: {
+        fontFamily: "open-sans-bold",
+        fontSize: 18,
+      },
+    },
+    drawerBackgroundColor: Colors.primaryColor,
+    drawerWidth: 200,
+  }
+);
+```
+
+In addition, state management is done through redux so favourites and filters can be implemented.
+
+#### Actions:
+
+* For setting favourites
+```
+export const TOGGLE_FAVOURITE = 'TOGGLE_FAVOURITE';
+
+export const toggleFavourite = (id) => {
+  return { type: TOGGLE_FAVOURITE, recipeId: id }
+};
+```
+* For setting filters
+```
+export const SET_FILTERS = 'SET_FILTERS';
+
+export const setFilters = filterSettings => {
+  return { type: SET_FILTERS, filters: filterSettings }
+};
+```
+
+#### Reducers:
+
+```
+const recipeReducer = (state = initialState, action) => {
+    switch (action.type) { 
+        //for setting favourites
+        case TOGGLE_FAVOURITE: 
+        const existingIndex = state.favouriteRecipes.findIndex(recipe => recipe.id === action.recipeId);
+        if (existingIndex >= 0) {
+            const updatedFavouriteRecipes = [...state.favouriteRecipes];
+            updatedFavouriteRecipes.splice(existingIndex, 1);
+            return { ...state, favouriteRecipes: updatedFavouriteRecipes };
+        }else {
+            const recipeToAdd = state.recipes.find(recipe => recipe.id === action.recipeId);
+            return { ...state, favouriteRecipes: state.favouriteRecipes.concat(recipeToAdd) };
+        }
+        //for setting filters
+        case SET_FILTERS:
+            const appliedFilters = action.filters;
+            const updatedFilteredRecipes = state.recipes.filter(recipe => {
+                if (appliedFilters.glutenFree && !recipe.isGlutenFree) {
+                    return false;
+                }
+                if (appliedFilters.lactoseFree && !recipe.isLactoseFree) {
+                    return false;
+                }
+                if (appliedFilters.vegetarian && !recipe.isVegetarian) {
+                    return false;
+                }
+                if (appliedFilters.vegan && !recipe.isVegan) {
+                    return false;
+                }
+                return true;
+            });
+            return { ...state, filteredRecipes: updatedFilteredRecipes }
+        default:
+            return state;
+    }
+}
+
+```
 
 ## Built with
 * Node.js version 12.16.3

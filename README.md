@@ -6,6 +6,7 @@ The app functions as a cookbook where you can view, favourite, and filter recipe
 ![Logo](./Images/logo.png)
 
 ## Table of contents
+* [Getting started](#getting-started)
 * [General info](#general-info)
 * [Built with](#built-with)
 

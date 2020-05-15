@@ -15,7 +15,7 @@ The app functions as a cookbook where you can view, favourite, and filter recipe
 
 Install Expo in the Play Store (Android) or the App Store (iOS)
 
-### Gettin access to the app
+### Getting access to the app
 
 The app is published at . Click on the link and select launch Project on Expo (on your mobile device)
 

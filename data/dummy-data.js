@@ -338,7 +338,7 @@ export const RECIPES = [
       new Recipe(
         'm11',
         ['c1', 'c2', 'c3'],
-        'Spaghetti alla carbonara',
+        'Spaghetti alla Carbonara',
         'affordable',
         'simple',
         require('../assets/carbonara.jpeg'),
@@ -371,7 +371,7 @@ export const RECIPES = [
       new Recipe (
         'm12',
         ['c1'],
-        'Paccheri with lamb ragù',
+        'Paccheri with Lamb Ragù',
         'pricey',
         'challenging',
         require('../assets/paccheri.jpeg'),        
@@ -410,7 +410,7 @@ export const RECIPES = [
       new Recipe (
         'm13',
         ['c1', 'c2', 'c5', 'c6'],
-        'Gamberi alla busara',
+        'Gamberi alla Busara',
         'pricey',
         'simple',
         require('../assets/gamberi_alla_busara.jpg'),
@@ -492,7 +492,7 @@ export const RECIPES = [
       new Recipe (
         'm15',
         ['c2', 'c3', 'c5'],
-        'Seasoned fries',
+        'Seasoned Fries',
         'affordable',
         'simple',
         require('../assets/fries.jpg'),
@@ -518,7 +518,7 @@ export const RECIPES = [
       new Recipe (
         'm16',
         ['c2', 'c3', 'c7'],
-        'Grilled chicken sandwich',
+        'Grilled Chicken Sandwich',
         'affordable',
         'simple',
         require('../assets/chicken_sandwich.jpg'),
@@ -603,7 +603,7 @@ export const RECIPES = [
       new Recipe (
         'm18',
         ['c3', 'c4', 'c6'],
-        'Almond-filled stollen',
+        'Almond-filled Stollen',
         'pricey',
         'hard',
         require('../assets/stollen.jpg'),
@@ -658,7 +658,7 @@ export const RECIPES = [
       new Recipe (
         'm19',
         ['c4', 'c5', 'c7', 'c10'],
-        'German potato salad',
+        'German Potato Salad',
         'affordable',
         'challenging',
         require('../assets/potato_salad.jpg'),
@@ -696,7 +696,7 @@ export const RECIPES = [
       new Recipe (
         'm20',
         ['c4'],
-        'Pork & apple roast',
+        'Pork & Apple Roast',
         'pricey',
         'simple',
         require('../assets/pork_n_apple_roast.jpg'),
@@ -731,7 +731,7 @@ export const RECIPES = [
       new Recipe (
         'm21',
         ['c6', 'c9'],
-        'Duck liver pâté',
+        'Duck Liver Pâté',
         'luxurious',
         'hard',
         require('../assets/pate.jpg'),
@@ -777,7 +777,7 @@ export const RECIPES = [
       new Recipe (
         'm22',
         ['c2', 'c3', 'c7'],
-        'Bacon & eggs with cheese',
+        'Bacon & Eggs with Cheese',
         'affordable',
         'simple',
         require('../assets/bacon_n_eggs.jpg'),
@@ -811,7 +811,7 @@ export const RECIPES = [
       new Recipe (
         'm23',
         ['c2', 'c5', 'c7'],
-        'Belgian waffles',
+        'Belgian Waffles',
         'affordable',
         'simple',
         require('../assets/waffles.jpg'),
@@ -842,7 +842,7 @@ export const RECIPES = [
       new Recipe (
         'm24',
         ['c6', 'c7', 'c9', 'c10'],
-        'French toast casserole',
+        'French Toast Casserole',
         'pricey',
         'challenging',
         require('../assets/casserole.jpg'),
@@ -882,7 +882,7 @@ export const RECIPES = [
       new Recipe (
         'm25',
         ['c5', 'c8', 'c10'],
-        'Veggie gyoza',
+        'Veggie Gyoza',
         'affordable',
         'challenging',
         require('../assets/veggie_gyoza.jpg'),
@@ -925,7 +925,7 @@ export const RECIPES = [
       new Recipe (
         'm26',
         ['c2', 'c3', 'c8'],
-        'Kung pao chicken',
+        'Kung Pao Chicken',
         'pricey',
         'challenging',
         require('../assets/kung_pao_chicken.jpg'),

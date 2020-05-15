@@ -19,7 +19,7 @@ Install Expo in the Play Store (Android) or the App Store (iOS)
 
 ### Getting access to the app
 
-The app is published at . Click on the link and select launch Project on Expo (on your mobile device)
+The app is published at https://expo.io/@naomiex/le-festin. Click on the link and select launch Project on Expo (on your mobile device)
 
 ## General info
 (This app has built-in navigation, through react-navigation, thus you can freely navigate between pages, with a back button on most pages, a bottom drawer, and a side drawer.)

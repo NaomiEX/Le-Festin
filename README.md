@@ -9,6 +9,8 @@ The app functions as a cookbook where you can view, favourite, and filter recipe
 * [Getting started](#getting-started)
 * [General info](#general-info)
 * [Demo](#demonstration)
+* [Features](#features)
+* [Code](#code-specifications)
 * [Built with](#built-with)
 
 ## Getting started

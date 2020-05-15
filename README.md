@@ -9,6 +9,16 @@ The app functions as a cookbook where you can view, favourite, and filter recipe
 * [General info](#general-info)
 * [Built with](#built-with)
 
+## Getting started
+
+### Prerequisites
+
+Install Expo in the Play Store (Android) or the App Store (iOS)
+
+### Gettin access to the app
+
+The app is published at . Click on the link and select launch Project on Expo (on your mobile device)
+
 ## General info
 (This app has built-in navigation, through react-navigation, thus you can freely navigate between pages, with a back button on most pages, a bottom drawer, and a side drawer.)
 

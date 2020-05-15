@@ -1,13 +1,25 @@
 # Le Festin
-This app was created for a Computer Science project. 
+This app was created by Michelle Adeline for a Computer Science project. 
 
 The app functions as a cookbook where you can view, favourite, and filter recipes.
 
 ![Logo](./Images/logo.png)
 
 ## Table of contents
+* [Getting started](#getting-started)
 * [General info](#general-info)
-* [Technologies](#technologies)
+* [Demo](#demonstration)
+* [Built with](#built-with)
+
+## Getting started
+
+### Prerequisites
+
+Install Expo in the Play Store (Android) or the App Store (iOS)
+
+### Getting access to the app
+
+The app is published at . Click on the link and select launch Project on Expo (on your mobile device)
 
 ## General info
 (This app has built-in navigation, through react-navigation, thus you can freely navigate between pages, with a back button on most pages, a bottom drawer, and a side drawer.)
@@ -24,7 +36,11 @@ When the user taps on the icon in the top left of the screen, a side-drawer will
 
 In the filters screen users are able to turn on and off certain filter criteria such as: gluten-free, vegan, vegetarian, lactose-free. Once they have set the filters to their desire, they can tap on the save icon on the top right to save their preferences.
 
-## Technologies
+## Demonstration
+
+![Demo](./video/demonstration.gif)
+
+## Built with
 * Node.js version 12.16.3
 * Expo SDK v37.0.0
 * React Native 0.62

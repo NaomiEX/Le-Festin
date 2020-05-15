@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Recipes App",
-    "slug": "recipes-app",
+    "name": "Le Festin",
+    "slug": "le-festin",
     "platforms": [
       "ios",
       "android",
@@ -24,7 +24,7 @@
     "ios": {
       "supportsTablet": true
     },
-    "description": "This app was created for a Computer Science project. The app functions as a cookbook where you can view, favourite, and filter recipes.",
+    "description": "This app was created for a Computer Science project by Michelle Adeline.\n\nThe app functions as a cookbook where you can view, favourite, and filter recipes.",
     "githubUrl": "https://github.com/NaomiEX/Recipes_App"
   }
 }

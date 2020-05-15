@@ -7,7 +7,7 @@ The app functions as a cookbook where you can view, favourite, and filter recipe
 
 ## Table of contents
 * [General info](#general-info)
-* [Technologies](#technologies)
+* [Built with](#built-with)
 
 ## General info
 (This app has built-in navigation, through react-navigation, thus you can freely navigate between pages, with a back button on most pages, a bottom drawer, and a side drawer.)
@@ -28,7 +28,7 @@ In the filters screen users are able to turn on and off certain filter criteria 
 
 ![Demo](./video/demonstration.gif)
 
-## Technologies
+## Built with
 * Node.js version 12.16.3
 * Expo SDK v37.0.0
 * React Native 0.62

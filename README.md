@@ -52,7 +52,7 @@ In the filters screen users are able to turn on and off certain filter criteria 
 This app has built-in navigation, through react-navigation, thus you can freely navigate between pages, with a back button on most pages, a bottom drawer to navigate between All Recipes and Favourites, and a side drawer to navigate between Recipes, Filters, and About.
 
 Default Navigation Options:
-```
+```js
 const defaultStackNavigatorOptions = {
   headerStyle: {
     backgroundColor: Platform.OS === "android" ? Colors.primaryColor : "",
@@ -73,7 +73,7 @@ const defaultStackNavigatorOptions = {
 
 Recipes Navigator:
 
-```
+```js
 const RecipesNavigator = createStackNavigator(
   {
     Categories: {
@@ -91,7 +91,7 @@ const RecipesNavigator = createStackNavigator(
 
 ```
 Bottom Drawer Navigator:
-```
+```js
 const tabScreenConfig = {
   Recipes: {
     screen: RecipesNavigator,
@@ -145,7 +145,7 @@ const RecipesFavTabsNavigator =
 
 ```
 Side Drawer Navigator:
-```
+```js
 const MainNavigator = createDrawerNavigator(
   {
     RecipesFavourites: {
@@ -208,7 +208,7 @@ In addition, state management is done through redux so favourites and filters ca
 #### Actions:
 
 * For setting favourites
-```
+```js
 export const TOGGLE_FAVOURITE = 'TOGGLE_FAVOURITE';
 
 export const toggleFavourite = (id) => {
@@ -216,7 +216,7 @@ export const toggleFavourite = (id) => {
 };
 ```
 * For setting filters
-```
+```js
 export const SET_FILTERS = 'SET_FILTERS';
 
 export const setFilters = filterSettings => {
@@ -226,7 +226,7 @@ export const setFilters = filterSettings => {
 
 #### Reducers:
 
-```
+```js
 const recipeReducer = (state = initialState, action) => {
     switch (action.type) { 
         //for setting favourites
